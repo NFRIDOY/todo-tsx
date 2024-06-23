@@ -3,22 +3,22 @@ import { ToDoContext } from "../../providers/ToDoProviders";
 
 export default function AddTodo() {
     const { dispatch } = useContext(ToDoContext);
-    const [addTodo, setAddTodo] = useState({
-        title: "",
-        isComplete: false,
-    });
+    const [task, setTask] = useState("");
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        console.log(addTodo);
-        dispatch({ type: "addTodo", payload: addTodo });
+        const todo = {
+            id: Math.random().toString(36).substring(2, 7),
+            title: task,
+            isCompleted: false,
+        };
+        console.log(todo);
+        dispatch({ type: "addTodo", payload: todo });
     };
     return (
         <form onSubmit={handleSubmit}>
             <input
-                onChange={(e) =>
-                    setAddTodo({ ...addTodo, title: e.target.value })
-                }
+                onChange={(e) => setTask(e.target.value)}
                 type="text"
                 name="title"
                 id="title"

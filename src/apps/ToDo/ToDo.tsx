@@ -16,7 +16,9 @@ export default function ToDo() {
                 <div>
                     {/* <AllToDo todos={todo} /> */}
                     {todo?.map((todo: TTodo) => (
-                        <div>{todo.title}</div>
+                        <>
+                            <div>{todo.title}</div>
+                        </>
                     ))}
                 </div>
             </div>
